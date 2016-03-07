@@ -11,31 +11,47 @@
 </head>
 <body>
 
- <div align="center">
-        <form:form action="register" method="post" commandName="User">
-            <table border="0">
-                <tr>
+<div align="center" class="table-responsive">
+<form:form action="register" method="post" commandName="User">
+
+  <table class="table">
+    	 <tr>
                     <td colspan="2" align="center"><h2>User Registration</h2></td>
                 </tr>
                 <tr>
-                    <td>User Name:</td>
-                   	<td><form:input path="userName"/></td>
+                    <td>
+                    	<label>User Name: </label>
+                    </td>
+                   	<td>
+                   		<form:input path="userName"/>
+                   	</td>
                 </tr>
+                
                 <tr>
-                    <td>Password:</td>
-                    <td><form:input path="password"/></td>
+                    <td>
+                    	<label>Password:</label>
+                    </td>
+                    <td>
+                    	<form:input path="password"/>
+                    </td>
                 </tr>
                 
                   <tr>
-                    <td>Email Address:</td>
-                    <td><form:input path="emailAddress"/></td>
+                    <td>
+                    	<label>Email Address:</label>
+                    </td>
+                    <td>
+                    	<form:input path="emailAddress"/>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" value="Register" /></td>
                 </tr>
-            </table>
-        </form:form>
-    </div>
+  </table>
+  </form:form>
+</div>
+
+ 
 
 </body>
 </html>
