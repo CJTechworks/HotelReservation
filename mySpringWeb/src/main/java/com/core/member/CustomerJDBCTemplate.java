@@ -91,7 +91,7 @@ public class CustomerJDBCTemplate implements CustomerDAO{
 		
 	}
 	public SearchResults searchRooms(SearchRequest searchRequest) {
-		String searchResultsSQL = "select h.Name, h.Phone, h.Address, h.City, h.State, h.Zip, R.RoomType, R.Rate, h.hotelId from customer_db.Hotel h " +
+		String searchResultsSQL = "select h.Name, h.Phone, h.Address, h.City, h.State, h.Zip, R.RoomType, R.RoomId, R.Rate, h.hotelId from customer_db.Hotel h " +
 		 "join customer_db.Room R on R.hotelId=h.hotelId"; 
 		SearchResults searchResults = jdbcTemplate.queryForObject(searchResultsSQL, new SearchResultsMapper());
 		return searchResults;

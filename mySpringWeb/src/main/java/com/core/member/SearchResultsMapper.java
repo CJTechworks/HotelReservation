@@ -19,6 +19,7 @@ public class SearchResultsMapper implements RowMapper<SearchResults>{
 		searchResults.setRoomType(rs.getString("RoomType"));
 		searchResults.setState(rs.getString("State"));
 		searchResults.setHotelId(rs.getInt("hotelId"));
+		searchResults.setRoomId(rs.getInt("RoomId"));
 		
 		return searchResults;
 	}

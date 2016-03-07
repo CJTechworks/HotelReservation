@@ -22,7 +22,7 @@
   
   
 			
- 	  	 <form:form action="makeReservation" method="post" commandName="S">
+ 	  	 <form:form action="makeReservation" method="post" commandName="SearchResults">
  	 
 			  <table class="table">
 			    <thead>
@@ -103,7 +103,8 @@
 			    </tbody>
 			  </table>
 			  <input type="hidden" value="${SearchResults.hotelId}"></input>
-			   <input type="hidden" value="1"></input>
+			  <input type="hidden" value="${SearchResults.roomId}"></input>
+			   
 		  </form:form>
 		
   	</div>

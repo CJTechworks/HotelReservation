@@ -21,6 +21,8 @@ public class SearchResults {
 	private Integer userId;
 	
 	private Integer hotelId;
+	
+	private Integer roomId;
 
 	public String getHotelName() {
 		return hotelName;
@@ -100,6 +102,14 @@ public class SearchResults {
 
 	public void setHotelId(Integer hotelId) {
 		this.hotelId = hotelId;
+	}
+
+	public Integer getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
 	}
 	
 	

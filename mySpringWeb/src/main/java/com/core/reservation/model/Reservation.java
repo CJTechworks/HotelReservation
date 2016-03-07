@@ -6,11 +6,13 @@ public class Reservation {
 
 	private String userId;
 	
-	private String roomId;
+	private Integer roomId;
 	
 	private Date startDate;
 	
 	private Date endDate;
+	
+	private String confirmationNumber;
 
 	public String getUserId() {
 		return userId;
@@ -20,14 +22,7 @@ public class Reservation {
 		this.userId = userId;
 	}
 
-	public String getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
-
+	
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -42,6 +37,22 @@ public class Reservation {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getConfirmationNumber() {
+		return confirmationNumber;
+	}
+
+	public void setConfirmationNumber(String confirmationNumber) {
+		this.confirmationNumber = confirmationNumber;
+	}
+
+	public Integer getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
 	}
 	
 }

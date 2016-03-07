@@ -1,5 +1,6 @@
 package com.core.reservation.controller;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.core.member.CustomerJDBCTemplate;
 import com.core.reservation.model.Reservation;
+import com.core.reservation.model.SearchResults;
 
 @Controller
 public class MakeReservationController {
@@ -20,17 +22,26 @@ public class MakeReservationController {
 	public CustomerJDBCTemplate jdbcTemplate;
 	
 	@RequestMapping(value="/makeReservation",method=RequestMethod.POST)
-	public ModelAndView makeReservation(@ModelAttribute("Reservation") Reservation reservation, Map<String,Object> modelMap){
+	public ModelAndView makeReservation(@ModelAttribute("SearchResults") SearchResults searchResults, Map<String,Object> modelMap){
 		
 		// update reservation here
+		
+		Reservation reservation = new Reservation();
+		
+		reservation.setRoomId(searchResults.getRoomId());
+		// TODO get the user id from user table
+		reservation.setUserId("1");
+		reservation.setStartDate(new Date());
+		reservation.setEndDate(new Date());
+		reservation.setRoomId(1);
 		
 		jdbcTemplate.makeReservation(reservation);
 		
 		// get the confirmation number
 		
-		Reservation confirmedReservation = null;
+		reservation.setConfirmationNumber("3455666");
 		
-		return new ModelAndView("reserve","reservation",modelMap);
+		return new ModelAndView("confirm","reservation",reservation);
 	}
 
 }
