@@ -6,6 +6,9 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.core.reservation.model.Reservation;
+import com.core.reservation.model.SearchRequest;
+import com.core.reservation.model.SearchResults;
 import com.core.reservation.model.User;
 
 public class CustomerJDBCTemplate implements CustomerDAO{
@@ -76,6 +79,7 @@ public class CustomerJDBCTemplate implements CustomerDAO{
 	      List<Customer> customers = jdbcTemplate.query(SQL, new CustomerMapper());
 	      return customers;
 	}
+	
 	public void createNewGuest(User user) {
 		String userName = user.getUserName();
 		String password = user.getPassword();
@@ -85,6 +89,18 @@ public class CustomerJDBCTemplate implements CustomerDAO{
 		int result = jdbcTemplate.update(newGuestSQL, userName, password, emailAddress);
 		System.out.println("create new guest :"+result);
 		
+	}
+	public SearchResults searchRooms(SearchRequest searchRequest) {
+		String searchResultsSQL = "select h.Name, h.Phone, h.Address, h.City, h.State, h.Zip, R.RoomType, R.Rate, h.hotelId from customer_db.Hotel h " +
+		 "join customer_db.Room R on R.hotelId=h.hotelId"; 
+		SearchResults searchResults = jdbcTemplate.queryForObject(searchResultsSQL, new SearchResultsMapper());
+		return searchResults;
+	}
+	public void makeReservation(Reservation reservation) {
+		String makeReservationSQL = "insert into customer_db.Reservation(UserId,RoomId,StartDate,EndDate) values(?,?,?,?)";
+		
+		int result = jdbcTemplate.update(makeReservationSQL, reservation.getUserId(), reservation.getRoomId(), reservation.getStartDate(), reservation.getEndDate());
+		System.out.println("reservation status :"+result);
 	}
 	
 	

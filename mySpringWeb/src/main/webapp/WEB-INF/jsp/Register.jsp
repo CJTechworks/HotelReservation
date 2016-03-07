@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration</title>
 </head>
-<body>
+<body>	
     <div align="center">
         <form:form action="create" method="post" commandName="userForm">
             <table border="0">

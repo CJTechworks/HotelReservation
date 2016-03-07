@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.core.reservation.model.Reservation;
+import com.core.reservation.model.SearchRequest;
+import com.core.reservation.model.SearchResults;
 import com.core.reservation.model.User;
 
 public interface CustomerDAO {
@@ -42,4 +45,15 @@ public interface CustomerDAO {
    
    /** new user registration  */
    public void createNewGuest(User user);
+   
+   /** search rooms **/
+   public SearchResults searchRooms(SearchRequest searchRequest);
+   
+   /** make reservation **/
+   
+   public void makeReservation(Reservation reservation);
+   
+   
+   
+   
 }
