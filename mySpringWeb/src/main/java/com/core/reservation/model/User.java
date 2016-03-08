@@ -6,6 +6,8 @@ public class User {
 	
 	private String password;
 	
+	private Integer userId;
+	
 	private String emailAddress;
 
 	public String getUserName() {
@@ -30,6 +32,14 @@ public class User {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.core.reservation.model.Reservation;
@@ -90,6 +91,26 @@ public class CustomerJDBCTemplate implements CustomerDAO{
 		System.out.println("create new guest :"+result);
 		
 	}
+	
+	
+	public User loginExistingUser(User user) {
+		User userResult = null;
+		try{
+			String userName = user.getUserName();
+			String password = user.getPassword();
+			
+			String existingUserSQL = "select username, userid from customer_db.UserLogin where username= ? && password = ?";
+			
+			 userResult = jdbcTemplate.queryForObject(existingUserSQL, new UserMapper(), userName, password);
+			
+		}
+		catch(IncorrectResultSizeDataAccessException e){
+			
+		}
+		
+		return userResult;
+	}
+	
 	public SearchResults searchRooms(SearchRequest searchRequest) {
 		String searchResultsSQL = "select h.Name, h.Phone, h.Address, h.City, h.State, h.Zip, R.RoomType, R.RoomId, R.Rate, h.hotelId from customer_db.Hotel h " +
 		 "join customer_db.Room R on R.hotelId=h.hotelId"; 
@@ -102,6 +123,8 @@ public class CustomerJDBCTemplate implements CustomerDAO{
 		int result = jdbcTemplate.update(makeReservationSQL, reservation.getUserId(), reservation.getRoomId(), reservation.getStartDate(), reservation.getEndDate());
 		System.out.println("reservation status :"+result);
 	}
+	
+
 	
 	
 

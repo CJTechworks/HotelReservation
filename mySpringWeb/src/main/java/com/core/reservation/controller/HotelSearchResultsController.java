@@ -24,10 +24,7 @@ public class HotelSearchResultsController {
 	@RequestMapping(value="/searchRooms",method=RequestMethod.POST)
 	public ModelAndView searchRooms(@ModelAttribute("SearchRequest") SearchRequest searchRequest,  ModelMap model){
 	 	SearchResults searchResults = jdbcTemplate.searchRooms(searchRequest);
-	 	
-		String result1 = "Hey.. I'm result1.. You can seeing me on welcome page";
 
-	 	model.addAttribute("result1", result1);
 	 	model.addAttribute("SearchResults", searchResults);
 	 	System.out.println("In search results controller");
 	 	return new ModelAndView("searchresults",model);
